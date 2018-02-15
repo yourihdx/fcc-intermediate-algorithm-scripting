@@ -30,6 +30,10 @@ function d1(digit){
         case '9':
             return 'IX';
             break;
+        default:
+            return '';
+            break;
+        
     }
 }
 
@@ -61,6 +65,9 @@ function d2(ten) {
             break;
         case '9':
             return 'XC';
+            break;
+        default:
+            return '';
             break;
     }
 }
@@ -94,6 +101,9 @@ function d3(hundred) {
         case '9':
             return 'CM';
             break;
+        default:
+            return '';
+            break;
     }
 }
 
@@ -106,7 +116,10 @@ function d4(thousand) {
             return 'MM';
             break;
         case '3':
-            return 'MM';
+            return 'MMM';
+            break;
+        default:
+            return '';
             break;
     }
 }
@@ -114,13 +127,17 @@ function d4(thousand) {
 function convertToRoman(num) {
 
     if (num > 3999) {
-        alert('The Converter works for numbers from 1 to 3999 only.');
-    } return;
+        console.log('The Converter works for numbers from 1 to 3999 only.');
+        return;
+    } 
 
-    var num_length = num.toString().length;
+    var num_to_string = num.toString();
+    var num_length = num_to_string.length;
 
-    num_to_string = num.toString();
     num1 = d1(num_to_string[num_length-1]);
+
+    console.log('num1: ', num1);
+    console.log('num_to_string: ', num_to_string, ' -> ', 'num_length: ', num_length)
 
     switch (num_length) {
         case 1:
@@ -140,4 +157,4 @@ function convertToRoman(num) {
     return num;
    }
 
-console.log(convertToRoman(1990));
+convertToRoman(24);
