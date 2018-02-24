@@ -12,20 +12,17 @@ function whatIsInAName(collection, source) {
       var obj_keys = Object.keys(obj);
       console.log('obj_keys: ', obj_keys);
       // console.log('source_keys: ', source_keys);
-
-      var test_arr = source_keys.filter(function(key){
-        if(obj_keys.indexOf(key) != -1) {
-          return key;
+      for (var j = 0; j < source_keys.length; j++) {
+        if(obj[source_keys[j]] == source[source_keys[j]] && arr.indexOf(obj) == -1){
+          arr.push(obj);
         }
-      });
-
-      console.log(test_arr.length == source_keys.length); 
+      }
     }
 
-    console.log(arr);
+    // console.log(arr);
     // && (Object.values(obj).indexOf(source_keys[key])) != -1)
     // Only change code above this line
-    // return arr;
+    return arr;
     
   }
   
