@@ -7,6 +7,7 @@ function diffArray(arr1, arr2) {
   // Same, same; but different.
 
     var newArr = arr2.filter(function(num) {
+      // в новый массив попадают только значения, которых нет в проверяемом массиве
       if (arr1.indexOf(num) == -1) {
         return num;
       }
