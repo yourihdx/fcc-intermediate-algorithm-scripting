@@ -3,26 +3,19 @@
 // For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the property and its value, that was passed on as the second argument.
 
 function whatIsInAName(collection, source) {
-    // What's in a name?
-    var arr = [];
-    // Only change code below this line
-    var source_keys = Object.keys(source);
-    for (var index = 0; index < collection.length; index++) {
-      var obj = collection[index];
-      var obj_keys = Object.keys(obj);
-      console.log('obj_keys: ', obj_keys);
-      // console.log('source_keys: ', source_keys);
-      for (var j = 0; j < source_keys.length; j++) {
-        if(obj[source_keys[j]] == source[source_keys[j]] && arr.indexOf(obj) == -1){
-          arr.push(obj);
-        }
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  var source_keys = Object.keys(source);
+  arr = collection.filter(function(obj) {
+    for (var index = 0; index < source_keys.length; index++) {
+      if(obj.hasOwnProperty(source_keys[index])){
+        console.log(obj[source_keys[index]]);      
       }
-    }
-
-    // console.log(arr);
-    // && (Object.values(obj).indexOf(source_keys[key])) != -1)
-    // Only change code above this line
-    return arr;
+    }  
+  });
+  // Only change code above this line
+  return arr;
     
   }
   
