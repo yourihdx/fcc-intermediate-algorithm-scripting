@@ -8,11 +8,21 @@ function whatIsInAName(collection, source) {
   // Only change code below this line
   var source_keys = Object.keys(source);
   arr = collection.filter(function(obj) {
+    // in the function we are getting obj and check it whatever we like
+    var sum = 0;
+    
     for (var index = 0; index < source_keys.length; index++) {
-      if(obj.hasOwnProperty(source_keys[index])){
-        console.log(obj[source_keys[index]]);      
+      if(
+        (obj.hasOwnProperty(source_keys[index])) && (obj[source_keys[index]] == (source[source_keys[index]]))
+      ){      
+        sum++;
       }
     }  
+    // if all pairs of key: value are in obj properties and match, we return obj to arr;
+    if(sum == source_keys.length){
+      return obj;
+    }
+
   });
   // Only change code above this line
   return arr;
