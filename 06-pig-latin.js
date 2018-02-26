@@ -7,6 +7,10 @@
 // Input strings are guaranteed to be English words in all lowercase.
 
 function translatePigLatin(str) {
+	var re ='';
+
+	re.test(str);
+
     return str;
   }
   
