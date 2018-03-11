@@ -383,24 +383,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "06-pig-latin.js",
-			"settings":
-			{
-				"buffer_size": 672,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "07-dna-pairing.js",
-			"settings":
-			{
-				"buffer_size": 482,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -474,6 +456,8 @@
 	],
 	"file_history":
 	[
+		"/C/MyProjects/JavaScript/fccIntermediateAlgorithmScripting/06-pig-latin.js",
+		"/C/MyProjects/JavaScript/fccIntermediateAlgorithmScripting/07-dna-pairing.js",
 		"/C/Users/hahan/AppData/Local/Temp/scp05440/home/bitrix/www/bitrix/modules/catalog/general/product.php",
 		"/C/Users/hahan/AppData/Local/Temp/scp54721/home/bitrix/www/bitrix/php_interface/init.php",
 		"/C/Users/hahan/AppData/Local/Temp/scp56362/home/bitrix/www/bitrix/.settings.php",
@@ -599,9 +583,7 @@
 		"/C/OpenServer/domains/laravel-blog.local/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
 		"/C/OpenServer/domains/laravel-blog.local/resources/views/posts/show.blade.php",
 		"/C/OpenServer/domains/laravel-blog.local/app/Comment.php",
-		"/C/OpenServer/domains/laravel-blog.local/resources/assets/sass/app.scss",
-		"/C/OpenServer/domains/laravel-blog.local/app/Model.php",
-		"/C/OpenServer/domains/laravel-blog.local/database/migrations/2017_09_30_103410_create_comments_table.php"
+		"/C/OpenServer/domains/laravel-blog.local/resources/assets/sass/app.scss"
 	],
 	"find":
 	{
@@ -636,68 +618,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "06-pig-latin.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 672,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								638,
-								638
-							]
-						],
-						"settings":
-						{
-							"markdonw_live_preview_last_run": 1519739479.31,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "07-dna-pairing.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 482,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								482,
-								3
-							]
-						],
-						"settings":
-						{
-							"markdonw_live_preview_last_run": 1519742293.04,
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

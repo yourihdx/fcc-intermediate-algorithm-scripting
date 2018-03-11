@@ -6,19 +6,10 @@
 
 // Input strings are guaranteed to be English words in all lowercase.
 
-
 function translatePigLatin(str) {
-
-	if(/^([^aeiou]){1,4}/.test(str)){
-		var cut = str.match(/^([^aeiou]){1,4}/)[0];
-		var index_of_the_rest = str.indexOf(str.match(/^([^aeiou]){1,4}/)[1]);
-		str = str.substr(index_of_the_rest + 1, str.length) + cut + "ay";
-	} else {
-		str = str + "way";
-	}
-	
-
-    return str;
+  regexObj.test(str)
+  
+  return str;
   }
   
   translatePigLatin("consonant");
