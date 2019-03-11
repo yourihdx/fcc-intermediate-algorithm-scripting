@@ -1,7 +1,15 @@
 function spinalCase(str) {
     // "It's such a fine line between stupid, and clever."
     // --David St. Hubbins
-    var strArr = str.split(/[A-Z][a-z]*|\W+/);
+    var strArr = str.split(/([A-Z][a-z]+)|\^W+[A-Z]+[a-z]+\W+/);
+    console.log(strArr);
+
+    strArr = strArr.filter(function(element){
+        if (element != undefined)
+            {var new_element = element.trim();
+            return new_element.length > 0;}
+        else return false;
+    });
 
     strArr = strArr.map(function (element) {
         return element.toLowerCase();
