@@ -19,7 +19,7 @@ function pairElement(str) {
 		case "G":
 			return GC;
   		default:
-  			return None;
+  			return undefined;
   			break;
   	}
   }
