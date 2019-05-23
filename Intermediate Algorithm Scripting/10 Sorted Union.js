@@ -1,12 +1,27 @@
 function uniteUnique(arr) {
 
-    //console.log("arguments length: ", arguments.length);
+  var new_arr = [];
 
-    var reducer = (accumulator, currentItem) => accumulator.push(currentItem);
-    }
+  var args_arr = Object.values(arguments);
 
-    return arguments.length;
+  var reducer = (accumulator, currentValue) => {
+
+    var filtered_arr = [];
+
+    filtered_arr = currentValue.filter(function(element){
+      var check = !accumulator.includes(element);
+      return check;
+    });
+
+    accumulator = accumulator.concat(filtered_arr);
+
+    return accumulator;
   }
+
+  return args_arr.reduce(reducer);
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
   
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
