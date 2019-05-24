@@ -1,7 +1,5 @@
 function uniteUnique(arr) {
 
-  var new_arr = [];
-
   var args_arr = Object.values(arguments);
 
   var reducer = (accumulator, currentValue) => {
