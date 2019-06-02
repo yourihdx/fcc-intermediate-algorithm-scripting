@@ -1,28 +1,43 @@
 function sumPrimes(num) {
 
-  получим массив простых чисел от 1 до корня из n
-  var primes_arr = [];
+  var primes_sum = 0;
 
-  for (var i = 1; i < Math.sqrt(n); i++){
-    
-  }
-    
-
-  return num;
+  function checkIfPrime(some_number){
+    var counter = 0;
+    for (let index = 2; index <= Math.sqrt(some_number); index++) {
+      if (some_number % index === 0) {
+        counter ++;
+        break;
+      }  
+    }
+    if (counter > 0){
+      return false;
+    } else return true; 
   }
   
-sumPrimes(10);
+  for (var i = 2; i <= num; i++) {
+    if (checkIfPrime(i)){
+      primes_sum += i;
+    }
+    
+  }
+
+
+  return primes_sum;
+  }
+  
+console.log(sumPrimes(10));
 
 
 
 
 
-
-
+/*
+console.log(sumPrimes(17));
 console.log(sumPrimes(10)); // should return a number.
 console.log(sumPrimes(10)); // should return 17.
 console.log(sumPrimes(977)); // should return 73156.
-
+*/
 
 
 
