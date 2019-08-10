@@ -1,72 +1,40 @@
-function smallestCommons(arr) {
-    
-    arr = arr.sort((a, b) => a > b);
+function smallestCommons(arr) {  
 
-    var dividers_arr0 = []; // the array of prime dividers from 2 to arr[0]
-    var dividers_arr1 = [];
-    var between_arr = [];
+  arr = arr.sort((a, b) => a > b);
 
-    function check_if_prime(some_number){
-        var counter = 0;
-        for (let index = 2; index <= Math.sqrt(some_number); index++) {
-          if (some_number % index === 0) {
-            counter ++;
-            break;
-          }  
-        }
-        if (counter > 0){
-          return false;
-        } else return true; 
+  function GreatestCommonDivisor(a, b){
+
+    if (a > b){
+        var A = a;
+        var B = b;
+    } else{
+        var A = b;
+        var B = a;
     }
 
+    do {
+        
+        remainder = A % B;
+        A = B;
 
-    // 1. check if both numbers are primes;
-
-    function get_prime_dividers_array(num){
-
-        var prime_dividers_array =[];
-
-        if (check_if_prime(num))
-        {
-            prime_dividers_array.push(num);
-        } 
-        else 
-        {
-
-            // 2. for both numbers make an array of dividers which are primes;
-            for (let index = 2; index <= Math.sqrt(num); index++)
-            {
-                if (check_if_prime(index)) 
-                {
-                    prime_dividers_array.push(index);
-                }
-            }
+        if(remainder === 0){
+            return B;
         }
 
-        return prime_dividers_array;
+        B = remainder;
 
-    }
+    } while (remainder !== 0);
 
+    return false;
 
-
-
-    /*
-
-    1. check if both numbers are primes;
-    2. for both numbers let's make an array of dividers which are primes; 
-    3. compare arrays of dividers;
-
-    */
-
-
-
-
-    
-    return arr;
   }
-  
-  
-smallestCommons([1,5]);
+
+
+
+}
+
+ 
+console.log(smallestCommons([1,5]));
 
 console.log(smallestCommons([1, 5])); // should return a number.
 console.log(smallestCommons([1, 5])); // should return 60.
