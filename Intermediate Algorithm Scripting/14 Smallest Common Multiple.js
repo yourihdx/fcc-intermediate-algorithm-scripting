@@ -1,8 +1,11 @@
-function smallestCommons(arr) {  
-
-  arr = arr.sort((a, b) => a > b);
+function smallestCommons(arr) { 
+  
+  var new_arr = arr.sort((a,b)=>a > b);
+  var gcd;
 
   function GreatestCommonDivisor(a, b){
+
+    var remainder;
 
     if (a > b){
         var A = a;
@@ -29,7 +32,20 @@ function smallestCommons(arr) {
 
   }
 
+  function SmallestCommonMultiple(a, b){
+    return a * b / GreatestCommonDivisor(a, b);
+  }
 
+  var scm = arr[0];
+
+  var i = arr[0];
+
+  do {
+    scm = SmallestCommonMultiple(scm, i+1);
+    i++;
+  } while (i < arr[1]);
+
+  return scm;
 
 }
 
