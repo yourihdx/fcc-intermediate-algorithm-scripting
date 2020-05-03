@@ -10,5 +10,5 @@ function countdown(n){
     }
   }
 
-console.log(countdown(5));
+console.log(countdown(15));
   // Only change code above this line
