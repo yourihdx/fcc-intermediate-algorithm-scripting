@@ -1,27 +1,37 @@
 function checkCashRegister(price, cash, cid) {
 
+    const billValues = {
+        "ONE HUNDRED": 100,
+        "TWENTY": 20,
+        "TEN": 10,
+        "FIVE": 5,
+        "ONE": 1,
+        "QUARTER": 0.25,
+        "DIME": 0.1,
+        "NICKEL": 0.05,
+        "PENNY": 0.01
+        };
+
+    // change sum which is due
     var change = (cash - price).toFixed(2);
 
     // getting cid sum:
-    const cid_sum = cid.reduce((sum, element)=>
+    const cidSum = cid.reduce((sum, element)=>
         sum + element[1]
     , 0).toFixed(2);
     
-    if (parseFloat(cid_sum) < parseFloat(change)) {
+    // if cid sum is not enough, exit
+    if (parseFloat(cidSum) < parseFloat(change)) {
         return {status: "INSUFFICIENT_FUNDS", change: []}
     }
 
-    const billValues = [
-        {"ONE HUNDRED": 100},
-        {"TWENTY": 20},
-        {"TEN": 10},
-        {"FIVE": 5},
-        {"ONE": 1},
-        {"QUARTER": 0.25},
-        {"DIME": 0.1},
-        {"NICKEL": 0.05},
-        {"PENNY": 0.01}
-    ]
+    if (parseFloat(cidSum) === parseFloat(change)) {
+        return {status: "CLOSED", change: cid}
+    }
+
+    // cid to use:
+    let usableCid = cid.filter(element => billValues[element[0]] <= change);
+    let sortedCid = usableCid.sort((a,b)=> billValues[b[0]] - billValues[a[0]]);
 
     function getObjectKey(obj){
         const keys = Object.keys(obj);
@@ -29,27 +39,32 @@ function checkCashRegister(price, cash, cid) {
     }
 
     function getSumInBills(some_sum, some_bill, sumInBills){
-        if (some_sum > some_bill[getObjectKey(some_bill)]) {
+        if (some_sum > some_bill) {
             if (some_sum < sumInBills) {
-                const changeInBills = some_bill[getObjectKey(some_bill)] * parseInt(some_sum/some_bill[getObjectKey(some_bill)]);
+                const changeInBills = some_bill * parseInt(some_sum/some_bill);
                 return changeInBills;
-            }else if (some_sum > sumInBills) {
+            }else if (some_sum >= sumInBills) {
                 return sumInBills;
             } 
         }
     }
 
+    let sumLeft = change;
+    let changeArr = [];
 
-    function getLargestBillSum (some_sum, cid){
-        billValues.map(element => getObjectKey(element)));
+    while (sortedCid.length > 0 && sumLeft > 0) {
+        changeArr.push([sortedCid[0][0], getSumInBills(sumLeft, billValues[sortedCid[0][0]] , sortedCid[0][1])]);
+        sumLeft = sumLeft - getSumInBills(change, billValues[sortedCid[0][0]] , sortedCid[0][1]);
+        
+        sortedCid.pop(sortedCid[0]);
+        sortedCid = sortedCid.filter(element => billValues[element[0]] <= sumLeft);
+        
     }
 
-    getLargestBillSum(change, cid);
 
 
-
-
-    return [(cash - price), cid_sum];
+    
+    return {status: "OPEN", changeArr};
   }
   
 checkCashRegister(
@@ -58,10 +73,10 @@ checkCashRegister(
     [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]
     );
 
-/*
+
 console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])); 
 // should return {status: "OPEN", change: [["QUARTER", 0.5]]}.
-
+/*
 checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]) 
 // should return {status: "OPEN", change: [["TWENTY", 60], ["TEN", 20], ["FIVE", 15], ["ONE", 1], ["QUARTER", 0.5], ["DIME", 0.2], ["PENNY", 0.04]]}.
 
